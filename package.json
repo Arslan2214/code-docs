@@ -1,7 +1,7 @@
 {
   "name": "autocode-docs",
   "displayName": "Autocode Docs",
-  "description": "It is an extension that will code readme.md file for the code and include all the essential parts into it and will be fully automatic, Just show the folder where you wrote code and  rest of work will be automatic as simple as that.",
+  "description": "Automatically generates a README.md file from your code folder, including essential details. Just point it to your code folder, and the rest is automatic.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.95.0"
@@ -9,19 +9,24 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:autocode-docs.helloWorld"
+  ],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "autocode-docs.helloWorld",
-      "title": "Hello World"
-    }]
+    "commands": [
+      {
+        "command": "autocode-docs.helloWorld",
+        "title": "Generate README.md"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "test": "vscode-test",
-    "compile": "code --extensionDevelopmentPath=."
+    "test": "npm run vscode:test",
+    "vscode:test": "node ./node_modules/@vscode/test-electron/out/index.js",
+    "build": "echo 'No build step needed for JavaScript.'"
   },
   "devDependencies": {
     "@types/vscode": "^1.95.0",
